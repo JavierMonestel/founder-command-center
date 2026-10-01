@@ -3,7 +3,7 @@
 **A chief-of-staff operating system for a founder running two business lines at once.**
 OKRs, follow-ups, pending decisions, blockers and the calendar for a clinical vertical and a performance/wellness vertical, all in one view, plus an AI daily brief and AI quick capture powered by Claude.
 
-[![Live demo](https://img.shields.io/badge/live%20demo-founder--command--center-0f766e?style=for-the-badge)](https://founder-command-center-jet.vercel.app)
+[![Live demo](https://img.shields.io/badge/live%20demo-founder--command--center-0f766e?style=for-the-badge)](https://founder-command-center-demo.vercel.app)
 [![CI](https://github.com/JavierMonestel/founder-command-center/actions/workflows/ci.yml/badge.svg)](https://github.com/JavierMonestel/founder-command-center/actions/workflows/ci.yml)
 ![Next.js 16](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
@@ -11,7 +11,7 @@ OKRs, follow-ups, pending decisions, blockers and the calendar for a clinical ve
 
 ![Overview](docs/screenshots/overview.png)
 
-> **Try it:** [founder-command-center-jet.vercel.app](https://founder-command-center-jet.vercel.app). You can click anything: mark follow-ups done, make decisions, update key results, paste notes into Quick Capture. Your changes are private to your browser, and **Reset demo data** restores everything.
+> **Try it:** [founder-command-center-demo.vercel.app](https://founder-command-center-demo.vercel.app). You can click anything: mark follow-ups done, make decisions, update key results, paste notes into Quick Capture. Your changes are private to your browser, and **Reset demo data** restores everything.
 
 ---
 
@@ -95,7 +95,7 @@ flowchart LR
 | Notion sync | Fridays 4 PM | `GET /api/snapshot`, then OKR progress and open follow-ups are upserted into the company wiki |
 
 ```bash
-curl -X POST https://founder-command-center-jet.vercel.app/api/ingest \
+curl -X POST https://founder-command-center-demo.vercel.app/api/ingest \
   -H "Content-Type: application/json" \
   -d '{"text":"- CTO to share strap test results by Friday","source":"slack","dry_run":true}'
 ```
