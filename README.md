@@ -51,32 +51,32 @@ No API key? The app runs fully in **demo mode** with the rules engine. The hoste
 
 ```mermaid
 flowchart LR
-    subgraph Sources
-      G[Grain recap webhook]
-      S[Slack via Zapier / Make]
-      U[Founder / EA in the UI]
-    end
-    subgraph App["Next.js 16 app (App Router)"]
-      SA[Server Actions]
-      API["/api/ingest · /api/brief · /api/snapshot"]
-      R[Repository layer]
-      AI["AI layer: Claude, or the rules engine as fallback"]
-      DB[(SQLite: node:sqlite)]
-    end
-    subgraph Outputs
-      N[Notion wiki sync]
-      SL[Slack morning brief]
-      L[Linear / Attio routing]
-    end
-    U --> SA --> R --> DB
-    G --> API
-    S --> API
-    API --> AI
-    SA --> AI
-    API --> R
-    API --> N
-    API --> SL
-    R --> L
+  subgraph In[Inputs]
+    U[Founder / EA in the UI]
+    G[Grain recap webhook]
+    S[Slack via Zapier or Make]
+  end
+  subgraph App[Next.js 16 app]
+    SA[Server Actions]
+    API["API: /ingest · /brief · /snapshot"]
+    AI["AI layer: Claude, with the rules engine as fallback"]
+    R[Repository layer]
+    DB[(SQLite via node:sqlite)]
+  end
+  subgraph Out[Outputs]
+    SL[Slack morning brief]
+    N[Notion wiki sync]
+  end
+  U --> SA
+  G --> API
+  S --> API
+  SA --> AI
+  API --> AI
+  SA --> R
+  API --> R
+  R --> DB
+  API --> SL
+  API --> N
 ```
 
 - **Next.js 16** with React Server Components and Server Actions; there is no client-side state library.
